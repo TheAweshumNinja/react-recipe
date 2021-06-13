@@ -1,12 +1,12 @@
 import React from "react";
 import Header from "./Header";
-import MainContainer from "./mainContainer";
+import RecipeContainer from "./RecipeContainer";
 
 function App () {
   return(
     <div>
       <Header />
-      <MainContainer />
+      <RecipeContainer />
     </div>
   );
 }
