@@ -2,18 +2,14 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 
 function SearchBar ({ searchQuery, setSearchQuery}) {
-    const history= useHistory ();
-    const onSubmit= (e) => {
-        history.push(`?s=${searchQuery}`);
-        e.preventDefault();
-    };
+    
+   function onChange(e) {
+       setSearchQuery(e.target.value)
+
+   };
+   
     return (
-        <form 
-        action="/"
-        method="get"
-        autoComplete="off"
-        onSubmit={onSubmit}
-        >
+        <form>
             <label htmlFor="header-search">
                 <span className="visually-hidden">
                     Search Recipes
@@ -21,7 +17,7 @@ function SearchBar ({ searchQuery, setSearchQuery}) {
             </label>
             <input
             value={searchQuery}
-            onInput={(e) => setSearchQuery(e.target.value)}
+            onChange={onChange}
             type="text"
             id="header-search"
             placeholder="Search Recipes"

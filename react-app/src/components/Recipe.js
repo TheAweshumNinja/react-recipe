@@ -1,18 +1,26 @@
 import React from 'react';
 
-function Recipe({ recipe, }) {
+function Recipe({ recipe }) {
 
+    function renderIngredients(){
+        return recipe.ingredients.map((ingredient, idx) => {
+            return <li key={idx}>{ingredient}</li>
+
+        });
+
+    }
     return (
         <div>
-           <img></img>            
-           <h2 >name testing </h2>
+           <img src= {recipe.thumbnail} />           
+           <h2 >{recipe.title} </h2>
            <ul>
-           <li>ingredients</li>
-           do this here 
+           {renderIngredients()}
+           
            </ul>
            
         </div>
-    )
+    );
 }
 
 export default Recipe;
+
