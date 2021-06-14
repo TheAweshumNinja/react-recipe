@@ -1,5 +1,4 @@
-import { useHistory } from "react-router-dom";
-import { useState } from "react";
+import React from "react";
 
 function SearchBar ({ searchQuery, setSearchQuery}) {
     
