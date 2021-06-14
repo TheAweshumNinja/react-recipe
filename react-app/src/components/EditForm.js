@@ -1,13 +1,14 @@
 import { useState} from "react";
 import React from 'react'
 
-function RecipeForm({ addNewRecipe}) {
+function EditForm({ recipe, editRecipe }) {
      const [formData, setFormData] = useState({
-        thumbnail:"",
-        title: "",
-        ingredients: [],
+        thumbnail:recipe.thumbnail,
+        title:recipe.title,
+        ingredients:recipe.ingredients,
 
      });
+     const ingredientsString= formData.ingredients.join(",")
      function handleOnChange(e) {
          let ingredientsList=[]
          if (e.target.name === "ingredients"){
@@ -20,7 +21,7 @@ function RecipeForm({ addNewRecipe}) {
      }
      function handleFormSubmission(e){
          e.preventDefault()
-         addNewRecipe(formData)
+         editRecipe(formData, parseInt(recipe.id, 10))
          setFormData({
             thumbnail:"",
             title: "",
@@ -43,7 +44,7 @@ function RecipeForm({ addNewRecipe}) {
            </label>
            <label>
              Ingredients: Separate each ingredient with a comma 
-             <input type="text" name="ingredients" value={formData.ingredients} onChange={handleOnChange}/>
+             <input type="text" name="ingredients" value={ingredientsString} onChange={handleOnChange}/>
            </label>
           <input type="submit" value="Submit"  />
         </form> 
@@ -51,5 +52,4 @@ function RecipeForm({ addNewRecipe}) {
     );
 }
 
-export default RecipeForm;
-
+export default EditForm;
